@@ -12,9 +12,9 @@ Process: add - call - append
 
 DEPTH = 1
 DIMENSIONS = 2
-LENGTH = 5
+LENGTH = 4
 CHANNELS = 64
-FILTERS = 32
+FILTERS = 16
 DROP = 0.0
 NOISE = 0.0
 SHAKE = 0.0
