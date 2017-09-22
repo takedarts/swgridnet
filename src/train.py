@@ -84,23 +84,23 @@ def check_arguments(path, args):
 
 def main():
   parser = argparse.ArgumentParser(description='network trainer')
-  parser.add_argument('dataset', metavar='DATASET', help='dataset name')
-  parser.add_argument('--output', '-o', default='result',
-                      metavar='OUTPUT', help='name of output directory')
+  parser.add_argument('dataset', metavar='DATASET', help='dataset name (mnist, cifar10 or cifar100)')
+  parser.add_argument('--output', '-o', default='result', metavar='OUTPUT',
+                      help='name of output directory (default: result)')
   parser.add_argument('--learning', '-l', default='restart', choices=('step', 'cosine', 'restart'),
-                      metavar='NAME', help='name of learning rate control')
+                      metavar='NAME', help='name of learning rate control (default: restart)')
   parser.add_argument('--rate', '-r', type=float, default=0.2,
-                      metavar='LEARNING_RATE', help='initial leaning rate')
+                      metavar='LEARNING_RATE', help='initial leaning rate (default: 0.2)')
   parser.add_argument('--momentum', '-m', type=float, default=0.9,
-                      metavar='MOMENTUM', help='momentum of SGD')
+                      metavar='MOMENTUM', help='momentum of SGD (default: 0.9)')
   parser.add_argument('--decay', '-d', type=float, default=0.0001,
-                      metavar='WEIGHT_DECAY', help='weight decay')
+                      metavar='WEIGHT_DECAY', help='weight decay (default: 0.0001)')
   parser.add_argument('--epoch', '-e', type=int, default=630,
-                      metavar='EPOCH', help='number of epochs for training')
+                      metavar='EPOCH', help='number of epochs for training (default: 630)')
   parser.add_argument('--batchsize', '-b', type=int, default=128,
-                      metavar='BATCH_SIZE', help='batch size of training')
+                      metavar='BATCH_SIZE', help='batch size of training (default: 128)')
   parser.add_argument('--procsize', '-p', type=int, default=None,
-                      metavar='DATA_SIZE', help='number of images at a training process')
+                      metavar='DATA_SIZE', help='number of images at a training process (default: 128)')
   parser.add_argument('--gpu', '-g', type=int, default=-1,
                       metavar='GPU_ID', help='GPU ID')
   parser.add_argument('--no-check', action='store_true', default=False, help='without type check of variables')
