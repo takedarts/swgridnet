@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 '''
-Grid Network モジュール。
+Grid Network Module.
 Unit: BN - Conv1x1 - BN - ReLU - Conv3x3 - BN
-Split: Conv1x1  - BN
+Split: Conv1x1 - BN
 Join: ReLU - Conv1x1 - BN
 Process: add - call - append
 @author: Atsushi TAKEDA
