@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Grid Network Module.
+Sandwiched Grid convolutional neural Network Module.
 Unit: BN - Conv1x1 - BN - ReLU - Conv3x3 - BN
 Split: Conv1x1 - BN
 Join: ReLU - Conv1x1 - BN

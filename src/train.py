@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import gridnet
+import swgridnet
 import mylib
 
 import os
@@ -126,7 +126,7 @@ def main():
   category, train_data, test_data = load_dataset(args.dataset)
 
   # create a neural network
-  network = create_network(gridnet.Network, category)
+  network = create_network(swgridnet.Network, category)
   
   if args.gpu >= 0:
     chainer.cuda.get_device(args.gpu).use()
