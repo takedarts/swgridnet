@@ -84,4 +84,4 @@ dot -Tpng function.dot -o function.png
 ```
 
 ## References
-[1] Takeda, Atsushi. "SwGridNet: A Deep Convolutional Neural Network based on Grid Topology for Image Classification." arXiv preprint (2017) (in appear).
+[1] Takeda, Atsushi. "SwGridNet: A Deep Convolutional Neural Network based on Grid Topology for Image Classification." arXiv preprint (2017) (in press).
