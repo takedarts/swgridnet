@@ -20,9 +20,9 @@ def load_dataset(name):
     return (100,) + mylib.datasets.get_cifar100()
   
   
-def create_network(cls, category):
+def create_network(cls, category, dimension, length, filters):
   '''create the specified network model'''
-  network = cls(category)
+  network = cls(category, dimension, length, filters)
   lossfun = chainer.functions.softmax_cross_entropy
   accfun = chainer.functions.accuracy
 
@@ -85,8 +85,14 @@ def check_arguments(path, args):
 def main():
   parser = argparse.ArgumentParser(description='network trainer')
   parser.add_argument('dataset', metavar='DATASET', help='dataset name (mnist, cifar10 or cifar100)')
-  parser.add_argument('--output', '-o', default='result', metavar='OUTPUT',
-                      help='name of output directory (default: result)')
+  parser.add_argument('--N', '-N', type=int, default=2,
+                      metavar='DIMENSION', help='dimensions of a grid layer (default: 2)')
+  parser.add_argument('--L', '-L', type=int, default=4,
+                      metavar='LENGTH', help='side length of grid layer (default: 4)')
+  parser.add_argument('--k', '-k', type=int, default=16,
+                      metavar='CHANNELS', help='number of channels of a processing unit (default: 16)')
+  parser.add_argument('--output', '-o', default='result',
+                      metavar='OUTPUT', help='name of output directory (default: result)')
   parser.add_argument('--learning', '-l', default='restart', choices=('step', 'cosine', 'restart'),
                       metavar='NAME', help='name of learning rate control (default: restart)')
   parser.add_argument('--rate', '-r', type=float, default=0.2,
@@ -126,7 +132,7 @@ def main():
   category, train_data, test_data = load_dataset(args.dataset)
 
   # create a neural network
-  network = create_network(swgridnet.Network, category)
+  network = create_network(swgridnet.Network, category, args.N, args.L, args.k)
   
   if args.gpu >= 0:
     chainer.cuda.get_device(args.gpu).use()

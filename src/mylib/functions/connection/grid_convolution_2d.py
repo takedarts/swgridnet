@@ -1,5 +1,4 @@
 import itertools
-import numpy
 
 from chainer import configuration
 from chainer import function
@@ -149,11 +148,9 @@ class GridConvolution2DUnitFunction(function.Function):
 
 
 class GridConvolution2DFunction(function.Function):
-  def __init__(self, dimensions, length, stride, pad, norm_stats, noise, shake):
+  def __init__(self, dimensions, length, stride, pad, norm_stats):
     self.dimensions = dimensions
     self.length = length
-    self.noise = noise
-    self.shake = shake
     self.functions = []
     self.connections = []
     self.shape = None
@@ -220,22 +217,9 @@ class GridConvolution2DFunction(function.Function):
       conns = self.connections[i]
       p = inputs[1 + i * 10:1 + (i + 1) * 10]
       x = in_data[:, slice(*in_idxs[i])]
-      s = (in_data.shape[0],) + ((1,) * (len(in_data.shape) - 1))
       
-      if self.noise != 0.0:
-        a = xp.random.normal(1.0, self.noise, s).astype(xp.float32)
-      else:
-        a = xp.ones(s, dtype=xp.float32)
-
-      if self.shake != 0.0:
-        conns = numpy.random.permutation(conns)
-        conns = conns[int(len(conns) * self.shake):]
-
-      if len(conns) != 0 and len(conns) != len(self.connections):
-        a *= len(self.connections[i]) / len(conns)
-
       for c in conns:
-        x += out_data[:, slice(*out_idxs[c])] * a
+        x += out_data[:, slice(*out_idxs[c])]
 
       if len(conns) != 0:
         x /= len(conns) + 1

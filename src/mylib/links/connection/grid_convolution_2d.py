@@ -75,8 +75,7 @@ class GridConvolution2DUnit(link.Link):
 
 
 class GridConvolution2D(link.ChainList):
-  def __init__(self, dimensions, length, filters, ksize=3, stride=1, pad=1,
-               decay=0.9, eps=2e-5, noise=0.0, shake=0.0,
+  def __init__(self, dimensions, length, filters, ksize=3, stride=1, pad=1, decay=0.9, eps=2e-5,
                initial_weight=None, initial_bias=None, initial_gamma=None, initial_beta=None):
     super().__init__()
 
@@ -84,8 +83,6 @@ class GridConvolution2D(link.ChainList):
     self.length = length
     self.stride = stride
     self.pad = pad
-    self.noise = noise
-    self.shake = shake
 
     self.in_channels = 0
     self.out_channels = 0
@@ -120,8 +117,7 @@ class GridConvolution2D(link.ChainList):
       stats.extend([u.mean0, u.var0, u.mean1, u.var1, u.mean2, u.var2])
       args.extend([u.W1, u.b1, u.W2, u.b2, u.gamma0, u.beta0, u.gamma1, u.beta1, u.gamma2, u.beta2])
 
-    func = GridConvolution2DFunction(self.dimensions, self.length, self.stride, self.pad, stats,
-                                     self.noise, self.shake)
+    func = GridConvolution2DFunction(self.dimensions, self.length, self.stride, self.pad, stats)
 
     return func(x, *args)
 
