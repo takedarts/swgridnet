@@ -76,6 +76,7 @@ This code outputs following files as the results:
 - `out.txt`: training results (text file).
 - `log.txt`: training results (json file).
 - `size.txt`: a list of the parameter sizes.
+- `argument.txt`: a list of command arguments.
 
 You can create a image file of the network tree from `.dot` files by using Graphviz.
 The command is as follows:
