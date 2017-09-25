@@ -11,7 +11,7 @@ This implementation runs with [Chainer 2.0 (or later)](https://chainer.org) and 
 
 `src/train.py` is a bootstrap module of training.
 This module trains a SwGridNet by using a dataset for image classification tasks and reports the results which contain train loss, train accuracy, test loss and test accuracy.
-The results are stored into a directory which is specified as a command argument (default is `result`).
+The results are stored into a directory specified in command arguments (default is `result`).
 
 The usage is as follows:
 ```
