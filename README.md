@@ -7,6 +7,7 @@ This is an implementation of SwGridNets (*Sandwiched Grid convolutional neural N
 The experiment results are reported in a paper of SwGridNets [1].
 
 ## How to use
+This implementation runs with [Chainer 2.0 (or later)](https://chainer.org) and Python 3.4 (or later). If you want to perform this on GPUs, [Cupy 1.0 (or later)](https://cupy.chainer.org) is also required.
 
 `src/train.py` is a bootstrap module of training.
 This module trains a SwGridNet by using a dataset for image classification tasks and reports the results which contain train loss, train accuracy, test loss and test accuracy.
@@ -56,7 +57,7 @@ optional arguments:
 ```
 You can see this with command `python src/train.py --help`.
 
-For example, when you want to confirm a performance of a SwGwidNet (N=4,L=2,k=16) with a CIFAR-10 dataset on GPU, you should execute a following command:
+For example, when you want to confirm a performance of a SwGwidNet (N=4,L=2,k=16) with a CIFAR-10 dataset on a GPU, you should execute a following command:
 ```
 python src/train.py -N 4 -L 2 -k 16 --gpu 0 cifar10
 ```
