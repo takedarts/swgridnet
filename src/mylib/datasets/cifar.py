@@ -39,9 +39,7 @@ class CifarDataset(chainer.dataset.DatasetMixin):
 
 def get_cifar10():
   '''This function creates a cifar10 data set.
-  All images in this data set are normalized.
-  In addition, train images are augmented by random-padding-clipping and flipping.
-  (This augmentation is standard of cifat10 benchmarks in 2015-2017)
+  Train images are augmented by random-padding-clipping and flip.
   '''
   train, test = chainer.datasets.cifar.get_cifar10()
 
@@ -53,8 +51,7 @@ def get_cifar10():
 
 def get_cifar100():
   '''This function creates a cifar100 data set.
-  All images in this data set are normalized.
-  In addition, train images are augmented by random-padding-clipping and flipping.
+  Train images are augmented by random-padding-clipping and flip.
   '''
   train, test = chainer.datasets.cifar.get_cifar100()
 
